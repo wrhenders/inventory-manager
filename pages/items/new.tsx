@@ -25,20 +25,17 @@ export default function NewItem() {
       quantity: parseInt(quantity),
       location,
     };
-    try {
-      fetch("http://localhost:3000/api/items/", {
-        method: "POST",
-        headers: { "Content-Type": "application.json" },
-        body: JSON.stringify(data),
+
+    fetch("http://localhost:3000/api/items/", {
+      method: "POST",
+      headers: { "Content-Type": "application.json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.status !== 200) throw Error("Problem with the server");
+        router.push("/");
       })
-        .then((res) => {
-          if (res.status !== 200) throw Error("Problem with the server");
-          router.push("/");
-        })
-        .catch((err) => alert(err.message));
-    } catch (error) {
-      alert(`oops...${error.message}`);
-    }
+      .catch((err) => alert(err.message));
   };
 
   const isValid = (): boolean => {

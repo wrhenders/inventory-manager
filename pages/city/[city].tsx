@@ -16,6 +16,15 @@ export default function City({ items }) {
   const { city } = router.query;
   const cityItems: Item[] = [...items].filter((item) => item.location == city);
 
+  const handleDelete = (id: string) => {
+    fetch(`http://localhost:3000/api/items/${id}`, { method: "DELETE" })
+      .then((res) => {
+        if (res.status !== 200) throw Error("Problem with the server");
+        router.push(`/city/${city}`);
+      })
+      .catch((err) => alert(err.message));
+  };
+
   const displayItems = () => {
     return cityItems.map((item) => {
       return (
@@ -30,7 +39,7 @@ export default function City({ items }) {
               </a>
             </Link>
             {"  "}
-            <button>Remove</button>
+            <button onClick={(e) => handleDelete(item.id)}>Remove</button>
           </td>
         </tr>
       );
