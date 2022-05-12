@@ -1,1 +1,127 @@
-{"items":[{"id":"382zu","name":"Self Taught Programmer","author":"Cory Althoff","description":"The Definitive Guide to Programming Professionally","quantity":10,"location":"Chicago"},{"id":"wlvrt","name":"Make Your Own Neural Network","author":"Tariq Rashid","description":"You can too!","quantity":8,"location":"Chicago"},{"id":"eu5ui","name":"Managing Humans","author":"Michael Lopp","description":"Biting and Humorous Tales of a Software Engineering Manager","quantity":2,"location":"New York City"},{"id":"yikaa","name":"The Pragmatic Programmer","author":"Andrew Hunt and David Thomas","description":"From Journeyman to Master","quantity":54,"location":"New York City"},{"id":"vqm21","name":"Learning JavaScript Design Patterns","author":"Addy Osmani","description":"Learn to code","quantity":532,"location":"Seattle"},{"id":"wrh7g","name":"The Art of Invisibility","author":"Kevin Mitnick and Robert Vamosi","description":"The Worlds Most Famous Hacker Teaches You How to Be Safe in the Age of Big Brother and Big Data","quantity":1,"location":"Seattle"},{"id":"2l109","name":"Clean Code","author":"Robert C. Martin","description":"A Handbook of Agile Software Craftsmanship","quantity":2,"location":"Atlanta"},{"id":"2a1ak","name":"Hacking","author":"Jon Erickson","description":"The Art of Exploitation","quantity":5,"location":"Atlanta"},{"id":"8ybt0","name":"Code","author":"Charles Petzold","description":"The Hidden Language of Computer Hardware and Software","quantity":99,"location":"Los Angeles"},{"id":"g5k5b","name":"JavaScript for Kids","author":"Nick Morgan","description":"A Playful Introduction to Programming","quantity":10,"location":"Los Angeles"},{"name":"Hello World","author":"Me","description":"Dunno","quantity":3,"location":"Chicago","id":"r3g0w"}],"cities":[{"name":"Chicago","lat":41.85,"lon":-87.65},{"name":"Seattle","lat":47.6062,"lon":-122.3321},{"name":"New York City","lat":40.7143,"lon":-74.006},{"name":"Atlanta","lat":33.749,"lon":-84.388},{"name":"Los Angeles","lat":34.0522,"lon":-118.2437}]}
+{
+  "items": [
+    {
+      "id": "382zu",
+      "name": "Self Taught Programmer",
+      "author": "Cory Althoff",
+      "description": "The Definitive Guide to Programming Professionally",
+      "quantity": 10,
+      "location": "Chicago"
+    },
+    {
+      "id": "wlvrt",
+      "name": "Make Your Own Neural Network",
+      "author": "Tariq Rashid",
+      "description": "You can too!",
+      "quantity": 8,
+      "location": "Chicago"
+    },
+    {
+      "id": "eu5ui",
+      "name": "Managing Humans",
+      "author": "Michael Lopp",
+      "description": "Biting and Humorous Tales of a Software Engineering Manager",
+      "quantity": 2,
+      "location": "New York City"
+    },
+    {
+      "id": "yikaa",
+      "name": "The Pragmatic Programmer",
+      "author": "Andrew Hunt and David Thomas",
+      "description": "From Journeyman to Master",
+      "quantity": 54,
+      "location": "New York City"
+    },
+    {
+      "id": "vqm21",
+      "name": "Learning JavaScript Design Patterns",
+      "author": "Addy Osmani",
+      "description": "Learn to code",
+      "quantity": 532,
+      "location": "Seattle"
+    },
+    {
+      "id": "wrh7g",
+      "name": "The Art of Invisibility",
+      "author": "Kevin Mitnick and Robert Vamosi",
+      "description": "The Worlds Most Famous Hacker Teaches You How to Be Safe in the Age of Big Brother and Big Data",
+      "quantity": 1,
+      "location": "Seattle"
+    },
+    {
+      "id": "2l109",
+      "name": "Clean Code",
+      "author": "Robert C. Martin",
+      "description": "A Handbook of Agile Software Craftsmanship",
+      "quantity": 2,
+      "location": "Atlanta"
+    },
+    {
+      "id": "2a1ak",
+      "name": "Hacking",
+      "author": "Jon Erickson",
+      "description": "The Art of Exploitation",
+      "quantity": 5,
+      "location": "Atlanta"
+    },
+    {
+      "id": "8ybt0",
+      "name": "Code",
+      "author": "Charles Petzold",
+      "description": "The Hidden Language of Computer Hardware and Software",
+      "quantity": 99,
+      "location": "Los Angeles"
+    },
+    {
+      "id": "g5k5b",
+      "name": "JavaScript for Kids",
+      "author": "Nick Morgan",
+      "description": "A Playful Introduction to Programming",
+      "quantity": 10,
+      "location": "Los Angeles"
+    },
+    {
+      "name": "Hello World",
+      "author": "Me",
+      "description": "Dunno",
+      "quantity": 3,
+      "location": "Chicago",
+      "id": "r3g0w"
+    },
+    {
+      "name": "Hello",
+      "author": "There",
+      "description": "sldfkj",
+      "quantity": 1,
+      "location": "New York City",
+      "id": "x9kqq"
+    }
+  ],
+  "cities": [
+    {
+      "name": "Chicago",
+      "lat": 41.85,
+      "lon": -87.65
+    },
+    {
+      "name": "Seattle",
+      "lat": 47.6062,
+      "lon": -122.3321
+    },
+    {
+      "name": "New York City",
+      "lat": 40.7143,
+      "lon": -74.006
+    },
+    {
+      "name": "Atlanta",
+      "lat": 33.749,
+      "lon": -84.388
+    },
+    {
+      "name": "Los Angeles",
+      "lat": 34.0522,
+      "lon": -118.2437
+    }
+  ]
+}

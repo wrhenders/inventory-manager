@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { Item } from "../interfaces/Item";
+import Weather from "../components/Weather";
 import { Fragment } from "react";
 
 export async function getServerSideProps() {
@@ -14,6 +15,7 @@ export async function getServerSideProps() {
     method: "GET",
   });
   const cities = await cityRes.json();
+
   return {
     props: { items, cities },
   };
@@ -21,7 +23,6 @@ export async function getServerSideProps() {
 
 export default function Home({ items, cities }) {
   const itemList: Item[] = [...items];
-
   const cityArray = cities;
 
   const addItems = (city: string) => {
@@ -43,7 +44,12 @@ export default function Home({ items, cities }) {
         <Fragment key={idx}>
           <Link href={`/city/${city.name}`}>
             <a>
-              <h2 className={styles.card}>{city.name}</h2>
+              <div className={styles.card}>
+                <h2>{city.name}</h2>
+                <div style={{ marginLeft: "auto" }}>
+                  <Weather lat={city.lat} lon={city.lon} />
+                </div>
+              </div>
             </a>
           </Link>
           <table

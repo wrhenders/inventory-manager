@@ -67,7 +67,6 @@ function create(reqBody) {
 
   // generate new user id
   newItem.id = Math.random().toString(36).substring(2, 7);
-  console.log(newItem);
   // add and save user
   items.push(newItem);
   saveData();
@@ -95,5 +94,5 @@ function _delete(id) {
 }
 
 function saveData() {
-  fs.writeFileSync("db.json", JSON.stringify({ items, cities }));
+  fs.writeFileSync("db.json", JSON.stringify({ items, cities }, null, 2));
 }
