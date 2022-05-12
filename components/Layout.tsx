@@ -21,6 +21,10 @@ export default function Layout(props) {
           <Link href="/items/new">
             <a>New Item</a>
           </Link>
+          <br />
+          <Link href="/items/search">
+            <a>All Items</a>
+          </Link>
         </h3>
         {props.children}
       </main>

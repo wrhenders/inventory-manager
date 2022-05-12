@@ -33,11 +33,11 @@ export default function City({ city, items }: Props) {
     return cityItems.map((item) => {
       return (
         <tr key={item.id}>
-          <Link href={`/items/edit/${item.id}`}>
-            <a>
-              <td>{item.name}</td>
-            </a>
-          </Link>
+          <td>
+            <Link href={`/items/edit/${item.id}`}>
+              <a>{item.name}</a>
+            </Link>
+          </td>
           <td>{item.author}</td>
           <td>{item.quantity}</td>
           <td>

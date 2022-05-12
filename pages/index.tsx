@@ -22,7 +22,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ items, cities }) {
-  const itemList: Item[] = [...items];
+  const itemList: Item[] = items;
   const cityArray = cities;
 
   const addItems = (city: string) => {
