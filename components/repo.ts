@@ -1,9 +1,10 @@
 const fs = require("fs");
-let items = require("../db.json");
+let { items, cities } = require("../db.json");
 import { Item } from "../interfaces/Item";
 
 export const itemsRepo = {
   getAll,
+  getAllCities,
   getById,
   create,
   update,
@@ -14,28 +15,71 @@ function getAll() {
   return items;
 }
 
+function getAllCities() {
+  return cities;
+}
+
 function getById(id: string) {
   return items.find((x) => x.id.toString() === id.toString());
 }
 
-function create(reqBody) {
-  const newItem: Item = JSON.parse(reqBody);
+function invalidInputs(name, author, description, quantity, location) {
+  const cityArray = [
+    "Chicago",
+    "Seattle",
+    "New York City",
+    "Atlanta",
+    "Los Angeles",
+  ];
+  return (
+    name.length > 99 ||
+    author.length > 99 ||
+    description.length > 500 ||
+    quantity > 10000 ||
+    !cityArray.includes(location)
+  );
+}
 
-  // validate not addition
-  // if (items.find(item => item.name === newItem.name && item.location===newItem.location)){
-  //     const idToUpdate = items.find(item => item.name === newItem.name && item.location===newItem.location).id
-  //     update(id, (newItem))
-  // }
+function create(reqBody) {
+  const { name, author, description, quantity, location } = JSON.parse(reqBody);
+
+  // Validate inputs
+  if (invalidInputs(name, author, description, quantity, location)) {
+    throw new Error("Invalid Inputs");
+  }
+  const newItem: Item = { name, author, description, quantity, location };
+
+  // Check not addition
+  const replicatedItem: Item = items.find(
+    (item) => item.name === newItem.name && item.location === newItem.location
+  );
+  if (replicatedItem) {
+    const updatedItem = {
+      name,
+      author,
+      description,
+      quantity: quantity + replicatedItem.quantity,
+      location,
+    };
+    update(replicatedItem.id, JSON.stringify(updatedItem));
+    return;
+  }
 
   // generate new user id
   newItem.id = Math.random().toString(36).substring(2, 7);
-
+  console.log(newItem);
   // add and save user
   items.push(newItem);
   saveData();
 }
 
-function update(id, { name, author, description, quantity, location }) {
+function update(id: string, reqBody) {
+  const { name, author, description, quantity, location } = JSON.parse(reqBody);
+
+  // Validate inputs
+  if (invalidInputs(name, author, description, quantity, location)) {
+    throw new Error("Invalid Inputs");
+  }
   const params = { name, author, description, quantity, location };
   const item = items.find((x) => x.id.toString() === id.toString());
 
@@ -51,5 +95,5 @@ function _delete(id) {
 }
 
 function saveData() {
-  fs.writeFileSync("db.json", JSON.stringify(items));
+  fs.writeFileSync("db.json", JSON.stringify({ items, cities }));
 }

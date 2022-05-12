@@ -7,8 +7,7 @@ export default function handler(req, res) {
     case "POST":
       return createItem();
     default:
-      console.log("hello");
-    // return res.status(405).end(`Method ${req.method} Not Allowed`);
+      return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
   function getItems() {

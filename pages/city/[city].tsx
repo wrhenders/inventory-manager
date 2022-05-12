@@ -3,17 +3,21 @@ import Layout from "../../components/Layout";
 import { Item } from "../../interfaces/Item";
 import Link from "next/link";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { city } = context.params;
   const res = await fetch("http://localhost:3000/api/items", { method: "GET" });
   const items = await res.json();
   return {
-    props: { items },
+    props: { city, items },
   };
 }
+interface Props {
+  items: Item[];
+  city: string;
+}
 
-export default function City({ items }) {
+export default function City({ city, items }: Props) {
   const router = useRouter();
-  const { city } = router.query;
   const cityItems: Item[] = [...items].filter((item) => item.location == city);
 
   const handleDelete = (id: string) => {
@@ -29,7 +33,11 @@ export default function City({ items }) {
     return cityItems.map((item) => {
       return (
         <tr key={item.id}>
-          <td>{item.name}</td>
+          <Link href={`/items/edit/${item.id}`}>
+            <a>
+              <td>{item.name}</td>
+            </a>
+          </Link>
           <td>{item.author}</td>
           <td>{item.quantity}</td>
           <td>

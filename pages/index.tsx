@@ -5,23 +5,24 @@ import { Item } from "../interfaces/Item";
 import { Fragment } from "react";
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/items", { method: "GET" });
-  const items = await res.json();
+  const itemRes = await fetch("http://localhost:3000/api/items", {
+    method: "GET",
+  });
+  const items = await itemRes.json();
+
+  const cityRes = await fetch("http://localhost:3000/api/cities", {
+    method: "GET",
+  });
+  const cities = await cityRes.json();
   return {
-    props: { items },
+    props: { items, cities },
   };
 }
 
-export default function Home({ items }) {
+export default function Home({ items, cities }) {
   const itemList: Item[] = [...items];
 
-  const cityArray = [
-    "Chicago",
-    "Seattle",
-    "New York City",
-    "Atlanta",
-    "Los Angeles",
-  ];
+  const cityArray = cities;
 
   const addItems = (city: string) => {
     const cityItems = itemList.filter((item) => item.location == city);
@@ -40,9 +41,9 @@ export default function Home({ items }) {
     return cityArray.map((city, idx) => {
       return (
         <Fragment key={idx}>
-          <Link href={`/city/${city}`}>
+          <Link href={`/city/${city.name}`}>
             <a>
-              <h2 className={styles.card}>{city}</h2>
+              <h2 className={styles.card}>{city.name}</h2>
             </a>
           </Link>
           <table
@@ -58,7 +59,7 @@ export default function Home({ items }) {
                 <th style={{ width: "20%" }}>Author</th>
                 <th style={{ width: "20%" }}>Quantity</th>
               </tr>
-              {addItems(city)}
+              {addItems(city.name)}
             </tbody>
           </table>
         </Fragment>

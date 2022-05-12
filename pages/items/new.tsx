@@ -32,7 +32,7 @@ export default function NewItem() {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        if (res.status !== 200) throw Error("Problem with the server");
+        if (res.status !== 200) throw Error("Incorrect inputs");
         router.push("/");
       })
       .catch((err) => alert(err.message));
@@ -52,21 +52,21 @@ export default function NewItem() {
     <Layout>
       <h2>New Inventory Item</h2>
       <form style={{ width: "60%", margin: "auto" }} onSubmit={handleSubmit}>
-        <label>Title:</label>
+        <label>Title: (Max char: 99)</label>
         <input
           type="text"
           placeholder="Title..."
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <label>Author:</label>
+        <label>Author: (Max char: 99)</label>
         <input
           type="text"
           placeholder="Author..."
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <label>Description:</label>
+        <label>Description: (Max char: 500)</label>
         <input
           type="text"
           placeholder="Description..."
