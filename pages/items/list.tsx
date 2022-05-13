@@ -42,7 +42,7 @@ export default function ListAll({ items }: Props) {
           <td>{item.quantity}</td>
           <td>
             <Link href={`/city/${item.location}`}>
-              <a>{item.location}</a>
+              <a>{item.location.replace(/_/g, " ")}</a>
             </Link>
           </td>
         </tr>

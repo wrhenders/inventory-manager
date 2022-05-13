@@ -64,6 +64,15 @@ export default function ItemDetail({ item, id }: Props) {
     );
   };
 
+  const handleDelete = (id: string) => {
+    fetch(`http://localhost:3000/api/items/${id}`, { method: "DELETE" })
+      .then((res) => {
+        if (res.status !== 200) throw Error("Problem with the server");
+        router.push(`/`);
+      })
+      .catch((err) => alert(err.message));
+  };
+
   return (
     <Layout>
       <h2>Edit Inventory Item</h2>
@@ -77,6 +86,7 @@ export default function ItemDetail({ item, id }: Props) {
           Description:
           <br /> {description}
         </p>
+        <button onClick={(e) => handleDelete(item.id)}>Remove</button>
       </div>
       <form style={{ width: "60%", margin: "auto" }} onSubmit={handleSubmit}>
         <label>Title:</label>

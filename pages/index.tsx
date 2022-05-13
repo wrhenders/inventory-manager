@@ -45,7 +45,7 @@ export default function Home({ items, cities }) {
           <Link href={`/city/${city.name}`}>
             <a>
               <div className={styles.card}>
-                <h2>{city.name}</h2>
+                <h2>{city.name.replace(/_/g, " ")}</h2>
                 <div style={{ marginLeft: "auto" }}>
                   <Weather lat={city.lat} lon={city.lon} />
                 </div>

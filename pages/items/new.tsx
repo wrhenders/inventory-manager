@@ -54,6 +54,7 @@ export default function NewItem() {
       <form style={{ width: "60%", margin: "auto" }} onSubmit={handleSubmit}>
         <label>Title: (Max char: 99)</label>
         <input
+          id="name"
           type="text"
           placeholder="Title..."
           value={name}
@@ -61,6 +62,7 @@ export default function NewItem() {
         />
         <label>Author: (Max char: 99)</label>
         <input
+          id="author"
           type="text"
           placeholder="Author..."
           value={author}
@@ -68,6 +70,7 @@ export default function NewItem() {
         />
         <label>Description: (Max char: 500)</label>
         <input
+          id="description"
           type="text"
           placeholder="Description..."
           value={description}
@@ -75,6 +78,7 @@ export default function NewItem() {
         />
         <label>Quantity:</label>
         <input
+          id="quantity"
           type="text"
           placeholder="Quantity..."
           value={quantity}
@@ -83,10 +87,10 @@ export default function NewItem() {
         <label>Location:</label>
         <select value={location} onChange={(e) => setLocation(e.target.value)}>
           <option value="Chicago">Chicago</option>
-          <option value="New York City">New York City</option>
+          <option value="New_York_City">New York City</option>
           <option value="Seattle">Seattle</option>
           <option value="Atlanta">Atlanta</option>
-          <option value="Los Angeles">Los Angeles</option>
+          <option value="Los_Angeles">Los Angeles</option>
         </select>
         <button type="submit">Submit</button>
       </form>

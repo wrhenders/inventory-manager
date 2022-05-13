@@ -22,7 +22,7 @@
       "author": "Michael Lopp",
       "description": "Biting and Humorous Tales of a Software Engineering Manager",
       "quantity": 2,
-      "location": "New York City"
+      "location": "New_York_City"
     },
     {
       "id": "yikaa",
@@ -30,7 +30,7 @@
       "author": "Andrew Hunt and David Thomas",
       "description": "From Journeyman to Master",
       "quantity": 54,
-      "location": "New York City"
+      "location": "New_York_City"
     },
     {
       "id": "vqm21",
@@ -70,7 +70,7 @@
       "author": "Charles Petzold",
       "description": "The Hidden Language of Computer Hardware and Software",
       "quantity": 99,
-      "location": "Los Angeles"
+      "location": "Los_Angeles"
     },
     {
       "id": "g5k5b",
@@ -78,7 +78,7 @@
       "author": "Nick Morgan",
       "description": "A Playful Introduction to Programming",
       "quantity": 10,
-      "location": "Los Angeles"
+      "location": "Los_Angeles"
     },
     {
       "name": "Hello World",
@@ -87,14 +87,6 @@
       "quantity": 3,
       "location": "Chicago",
       "id": "r3g0w"
-    },
-    {
-      "name": "Hello",
-      "author": "There",
-      "description": "sldfkj",
-      "quantity": 1,
-      "location": "New York City",
-      "id": "x9kqq"
     }
   ],
   "cities": [
@@ -109,7 +101,7 @@
       "lon": -122.3321
     },
     {
-      "name": "New York City",
+      "name": "New_York_City",
       "lat": 40.7143,
       "lon": -74.006
     },
@@ -119,7 +111,7 @@
       "lon": -84.388
     },
     {
-      "name": "Los Angeles",
+      "name": "Los_Angeles",
       "lat": 34.0522,
       "lon": -118.2437
     }

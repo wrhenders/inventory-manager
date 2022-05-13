@@ -56,7 +56,7 @@ export default function City({ city, items }: Props) {
 
   return (
     <Layout>
-      <h2>Inventory from {city}</h2>
+      <h2>Inventory from {city.replace(/_/g, " ")}</h2>
       <table
         style={{
           width: "60%",
