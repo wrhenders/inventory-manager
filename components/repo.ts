@@ -24,19 +24,12 @@ function getById(id: string) {
 }
 
 function invalidInputs(name, author, description, quantity, location) {
-  const cityArray = [
-    "Chicago",
-    "Seattle",
-    "New York City",
-    "Atlanta",
-    "Los Angeles",
-  ];
   return (
     name.length > 99 ||
     author.length > 99 ||
     description.length > 500 ||
     quantity > 10000 ||
-    !cityArray.includes(location)
+    !cities.some((city) => city.name == location)
   );
 }
 
