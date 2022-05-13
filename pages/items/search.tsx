@@ -55,9 +55,38 @@ export default function Search({ items }: Props) {
     router.replace(router.asPath);
   };
 
+  const toCSV = (data: Item[]) => {
+    const csvString = [
+      ["Title", "Author", "Description", "Quantity", "Location"],
+      ...data.map((item) => [
+        item.name.replace(/,/g, ","),
+        item.author.replace(/,/g, ","),
+        item.description.replace(/,/g, ","),
+        item.quantity,
+        item.location.replace(/,/g, ","),
+      ]),
+    ]
+      .map((el) => el.join(","))
+      .join("\n");
+
+    return "data:text/csv;charset=utf-8," + csvString;
+  };
+
+  const handleDownloadClick = () => {
+    const data = toCSV(itemArray);
+    window.open(encodeURI(data));
+  };
+
   return (
     <Layout>
       <h2>Total Inventory List</h2>
+
+      <button
+        style={{ marginLeft: "auto", width: "10%" }}
+        onClick={(e) => handleDownloadClick()}
+      >
+        Download to CSV
+      </button>
       <h4 style={{ textAlign: "center" }}>Use /\ to sort by data</h4>
       <table
         style={{
