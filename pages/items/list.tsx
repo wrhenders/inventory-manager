@@ -18,7 +18,7 @@ interface Props {
   items: Item[];
 }
 
-export default function Search({ items }: Props) {
+export default function ListAll({ items }: Props) {
   const [sortType, setSortType] = useState("name");
   const [itemArray, setItemArray] = useState(items);
   const router = useRouter();

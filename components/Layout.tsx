@@ -22,7 +22,7 @@ export default function Layout(props) {
             <a>New Item</a>
           </Link>
           <br />
-          <Link href="/items/search">
+          <Link href="/items/list">
             <a>All Items</a>
           </Link>
         </h3>
