@@ -56,17 +56,17 @@ inventory-manager/
 │   │
 │   └───api/
 │   │     └───cities/
-|   |     |        index.ts
+|   |     |         index.ts
 │   │     └───items/
 |   |           |   index.ts
 |   |           |   [id].ts
 │   │
 │   └───items/
-│   │    |  new.tsx
-│   │    |  list.tsx
+│   │    |   new.tsx
+│   │    |   list.tsx
 │   │    |
 │   │    └───edit/
-│   │        │   [id].tsx
+│   │           │   [id].tsx
 │   │
 │   └───city/
 │        │   [city].tsx
@@ -83,8 +83,10 @@ inventory-manager/
 |        |   favicon.ico
 │
 └───styles/
-    │   global.css
-    │   Home.module.css
+|        │   global.css
+|        │   Home.module.css
+|
+└───cypress/
 
 ```
 
