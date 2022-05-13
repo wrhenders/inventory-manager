@@ -1,34 +1,81 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Inventory Manager
+
+Inventory Managing Web App that tracks book inventories over 5 different cities. 
+It shows the local weather, as well as allows the user to download the data to a CSV file for working in excel or other data processing.
+
+Leverages Next.js to build and interactive Web App with a CRUD API
+
+![Image](https://i.ibb.co/w6N33g5/Screenshot-2022-05-13-at-08-46-55-Inventory-Manager.png)
 
 ## Getting Started
 
-First, run the development server:
+#### Prerequisites
 
+To get the app running locally, you will need Node installed.
+
+After installing [Node](https://nodejs.org/en/), run
+```bash
+npm install
+```
+#### Development Server
+
+To run a development server at http://localhost:3000 use
 ```bash
 npm run dev
-# or
-yarn dev
 ```
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Application Structure
+* This app follows a mostly typical Next.js app structure, using pages directory to create the structure and URL routing of the project.
+  - I chose Next.js to use their server side rendering functionality to allow quick loads and communication with the local database.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+* The main page shows the cities, their weather and inventory allocated to them. 
+  - The Layout component is used to create the navigation bar and structure of each page.
+  - Each city links to a breakdown of it's items to edit or delete.
+  - There are also links on each page to create a new item or list all items, which then allows a CSV download.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* The api endpoints are managed in the api directory. 
+  - The frontend first checks that any data entry fits the necessary write parameters, then sends the data through the api to the repo component which strips any excess data, revalidates and writes or retreives from the JSON database.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+inventory-manager/
+│   db.json
+│
+└───pages/
+│   │   _app.tsx
+│   │   index.tsx
+│   │
+│   └───api/
+│   │     └───cities/
+|   |     |        index.ts
+│   │     └───items/
+|   |           |   index.ts
+|   |           |   [id].ts
+│   │
+│   └───items/
+│   │    |  new.tsx
+│   │    |  list.tsx
+│   │    | 
+│   │    └───edit/
+│   │        │   [id].tsx
+│   │           
+│   └───city/
+│        │   [city].tsx
+|
+└───components/
+|        |   Layout.tsx
+|        |   Weather.tsx
+|        |   repo.ts
+|
+└───interfaces/
+|        |   Item.ts  
+|
+└───public/
+|        |   favicon.ico  
+│   
+└───styles/
+    │   global.css
+    │   Home.module.css
+    
+```
