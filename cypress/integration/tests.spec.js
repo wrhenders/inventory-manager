@@ -1,5 +1,3 @@
-const { isExportDeclaration } = require("typescript");
-
 describe("Startup Tests", () => {
   it("Visits the Home Page", () => {
     cy.visit("http://localhost:3000");
@@ -30,9 +28,30 @@ describe("Create New Item", () => {
     cy.get("#name").should("be.visible").type("Test Book");
     cy.get("#author").should("be.visible").type("John Doe");
     cy.get("#description").should("be.visible").type("Lorem Ipsum blah");
-    cy.get("#quantity").should("be.visible").type("88");
+    cy.get("#quantity").should("be.visible").type("10");
     cy.get("select").should("be.visible").select("Atlanta");
     cy.get("button[type='submit']").should("be.visible").click();
+  });
+});
+
+describe("Create Duplicate Item adds to count", () => {
+  it("Visits the Home Page", () => {
+    cy.visit("http://localhost:3000");
+  });
+  it("Clicks New Item", () => {
+    cy.contains("New Item").click();
+  });
+  it("Fills out the form and submits", () => {
+    cy.get("#name").should("be.visible").type("Test Book");
+    cy.get("#author").should("be.visible").type("John Doe");
+    cy.get("#description").should("be.visible").type("Lorem Ipsum blah");
+    cy.get("#quantity").should("be.visible").type("20");
+    cy.get("select").should("be.visible").select("Atlanta");
+    cy.get("button[type='submit']").should("be.visible").click();
+  });
+  it("Confirms item quantity added", () => {
+    cy.visit("http://localhost:3000/city/Atlanta");
+    cy.contains("Test Book").should("be.visible").parents("tr").contains("30");
   });
 });
 

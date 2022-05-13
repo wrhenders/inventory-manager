@@ -87,3 +87,13 @@ inventory-manager/
     │   Home.module.css
 
 ```
+
+## Testing
+
+Testing uses the [Cypress](https://docs.cypress.io) library and runs tests to confirm
+
+- All pages are avaiable
+- Items can be created
+  - Submittals that break the form throw an Alert error
+  - Items that are duplicates are added to current quantity
+- Items can be deleted
