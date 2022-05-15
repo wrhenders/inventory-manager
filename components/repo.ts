@@ -1,12 +1,20 @@
-const fs = require("fs");
 import { Item, City } from "../interfaces/";
+import fs from "fs";
 
-type dbImport = {
-  items: Item[];
-  cities: City[];
-};
+let items: Item[];
+let cities: City[];
 
-let { items, cities }: dbImport = require("../db.json");
+let dbSource = "LOCAL";
+
+if (dbSource == "REPLIT") {
+  const db = require("../db.json");
+  items = db.items;
+  cities = db.cities;
+} else {
+  const db = require("../db.json");
+  items = db.items;
+  cities = db.cities;
+}
 
 export const itemsRepo = {
   getAll,
