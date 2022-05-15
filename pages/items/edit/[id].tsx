@@ -1,18 +1,20 @@
+import { GetServerSideProps } from "next";
 import Layout from "../../../components/Layout";
 import { useState } from "react";
-import { Item } from "../../../interfaces/Item";
+import { Item } from "../../../interfaces/";
 import { useRouter } from "next/router";
+const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params;
-  const res = await fetch(`http://localhost:3000/api/items/${id}`, {
+  const res = await fetch(`${url}/api/items/${id}`, {
     method: "GET",
   });
-  const item = await res.json();
+  const item: Item = await res.json();
   return {
     props: { id, item },
   };
-}
+};
 
 interface Props {
   item: Item;
@@ -41,8 +43,8 @@ export default function ItemDetail({ item, id }: Props) {
       quantity: parseInt(quantity),
       location,
     };
-    console.log(data);
-    fetch(`http://localhost:3000/api/items/${id}`, {
+
+    fetch(`${url}/api/items/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application.json" },
       body: JSON.stringify(data),
@@ -65,7 +67,7 @@ export default function ItemDetail({ item, id }: Props) {
   };
 
   const handleDelete = (id: string) => {
-    fetch(`http://localhost:3000/api/items/${id}`, { method: "DELETE" })
+    fetch(`${url}/${id}`, { method: "DELETE" })
       .then((res) => {
         if (res.status !== 200) throw Error("Problem with the server");
         router.push(`/`);

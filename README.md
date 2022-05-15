@@ -1,5 +1,7 @@
 # Inventory Manager
 
+---- Repl Link
+
 Inventory Managing Web App that tracks book inventories over 5 different cities.
 It shows the local weather, as well as allows the user to download the data to a CSV file for working in excel or other data processing.
 
@@ -31,7 +33,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-## Application Structure
+## Application Architecture
 
 - This app follows a mostly typical Next.js app structure, using pages directory to create the structure and URL routing of the project.
 
@@ -46,55 +48,23 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 - The api endpoints are managed in the api directory.
   - The frontend first checks that any data entry fits the necessary write parameters, then sends the data through the api to the repo component which strips any excess data, revalidates and writes or retreives from the JSON database.
 
-```
-inventory-manager/
-│   db.json
-│
-└───pages/
-│   │   _app.tsx
-│   │   index.tsx
-│   │
-│   └───api/
-│   │     └───cities/
-|   |     |         index.ts
-│   │     └───items/
-|   |           |   index.ts
-|   |           |   [id].ts
-│   │
-│   └───items/
-│   │    |   new.tsx
-│   │    |   list.tsx
-│   │    |
-│   │    └───edit/
-│   │           │   [id].tsx
-│   │
-│   └───city/
-│        │   [city].tsx
-|
-└───components/
-|        |   Layout.tsx
-|        |   Weather.tsx
-|        |   repo.ts
-|
-└───interfaces/
-|        |   Item.ts
-|
-└───public/
-|        |   favicon.ico
-│
-└───styles/
-|        │   global.css
-|        │   Home.module.css
-|
-└───cypress/
-
-```
-
 ## Testing
 
 Testing uses the [Cypress](https://docs.cypress.io) library and runs tests to confirm
 
-- All pages are avaiable
+To use Cypress, after libraries are installed, you can use the CLI with run or Browser GUI using open
+
+```bash
+npx cypress run
+
+or
+
+npx cypress open
+```
+
+The included end-to-end Cypress tests check:
+
+- All pages are available
 - Items can be created
   - Submittals that break the form throw an Alert error
   - Items that are duplicates are added to current quantity

@@ -79,14 +79,6 @@
       "description": "A Playful Introduction to Programming",
       "quantity": 10,
       "location": "Los_Angeles"
-    },
-    {
-      "name": "Hello World",
-      "author": "Me",
-      "description": "Dunno",
-      "quantity": 3,
-      "location": "Chicago",
-      "id": "r3g0w"
     }
   ],
   "cities": [

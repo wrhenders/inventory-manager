@@ -1,7 +1,8 @@
 import Layout from "../../components/Layout";
 import { useState } from "react";
-import { Item } from "../../interfaces/Item";
+import { Item } from "../../interfaces/";
 import { useRouter } from "next/router";
+const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export default function NewItem() {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ export default function NewItem() {
 
   const router = useRouter();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!isValid()) {
       alert("All entries must be filled and valid");
@@ -26,7 +27,7 @@ export default function NewItem() {
       location,
     };
 
-    fetch("http://localhost:3000/api/items/", {
+    fetch(`${url}/api/items/`, {
       method: "POST",
       headers: { "Content-Type": "application.json" },
       body: JSON.stringify(data),

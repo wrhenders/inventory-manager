@@ -1,18 +1,21 @@
+import { GetServerSideProps } from "next";
 import Layout from "../../components/Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Item } from "../../interfaces/Item";
+import { Item } from "../../interfaces/";
 import { useState, useEffect } from "react";
+import { toCSV } from "../../components/toCSV";
+const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
-export async function getServerSideProps() {
-  const itemRes = await fetch("http://localhost:3000/api/items", {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const itemRes = await fetch(`${url}/api/items`, {
     method: "GET",
   });
-  const items = await itemRes.json();
+  const items: Item = await itemRes.json();
   return {
     props: { items },
   };
-}
+};
 
 interface Props {
   items: Item[];
@@ -53,23 +56,6 @@ export default function ListAll({ items }: Props) {
   const handleClick = (type: string) => {
     setSortType(type);
     router.replace(router.asPath);
-  };
-
-  const toCSV = (data: Item[]) => {
-    const csvString = [
-      ["Title", "Author", "Description", "Quantity", "Location"],
-      ...data.map((item) => [
-        item.name.replace(/,/g, ","),
-        item.author.replace(/,/g, ","),
-        item.description.replace(/,/g, ","),
-        item.quantity,
-        item.location.replace(/,/g, ","),
-      ]),
-    ]
-      .map((el) => el.join(","))
-      .join("\n");
-
-    return "data:text/csv;charset=utf-8," + csvString;
   };
 
   const handleDownloadClick = () => {

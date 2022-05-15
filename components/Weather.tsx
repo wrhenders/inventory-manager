@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
-const Weather = ({ lat, lon }) => {
+type WeatherProps = {
+  lat: number;
+  lon: number;
+};
+
+const Weather = ({ lat, lon }: WeatherProps) => {
   const [desc, setDesc] = useState("Loading...");
   const [temp, setTemp] = useState("Loading...");
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;

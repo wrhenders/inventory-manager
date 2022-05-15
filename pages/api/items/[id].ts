@@ -1,6 +1,7 @@
 import { itemsRepo } from "../../../components/repo";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
       return getById();
@@ -13,13 +14,13 @@ export default function handler(req, res) {
   }
 
   function getById() {
-    const item = itemsRepo.getById(req.query.id);
+    const item = itemsRepo.getById(req.query.id as string);
     return res.status(200).json(item);
   }
 
   function updateItem() {
     try {
-      itemsRepo.update(req.query.id, req.body);
+      itemsRepo.update(req.query.id as string, req.body);
       return res.status(200).json({});
     } catch (error) {
       return res.status(400).json({ message: error });
@@ -27,7 +28,7 @@ export default function handler(req, res) {
   }
 
   function deleteItem() {
-    itemsRepo.delete(req.query.id);
+    itemsRepo.delete(req.query.id as string);
     return res.status(200).json({});
   }
 }

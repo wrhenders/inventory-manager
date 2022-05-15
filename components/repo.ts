@@ -1,6 +1,12 @@
 const fs = require("fs");
-let { items, cities } = require("../db.json");
-import { Item } from "../interfaces/Item";
+import { Item, City } from "../interfaces/";
+
+type dbImport = {
+  items: Item[];
+  cities: City[];
+};
+
+let { items, cities }: dbImport = require("../db.json");
 
 export const itemsRepo = {
   getAll,
@@ -23,21 +29,28 @@ function getById(id: string) {
   return items.find((x) => x.id.toString() === id.toString());
 }
 
-function invalidInputs(name, author, description, quantity, location) {
+function validInputs(
+  name: string,
+  author: string,
+  description: string,
+  quantity: number,
+  location: string
+) {
   return (
-    name.length > 99 ||
-    author.length > 99 ||
-    description.length > 500 ||
-    quantity > 10000 ||
-    !cities.some((city) => city.name == location)
+    (typeof name == "string" && name.length < 99) ||
+    (typeof author == "string" && author.length < 99) ||
+    (typeof description == "string" && description.length < 500) ||
+    (typeof quantity == "number" && quantity < 10000) ||
+    (typeof cities == "object" && cities.some((city) => city.name == location))
   );
 }
 
-function create(reqBody) {
+function create(reqBody: string) {
   const { name, author, description, quantity, location } = JSON.parse(reqBody);
+  console.log(typeof reqBody, name);
 
   // Validate inputs
-  if (invalidInputs(name, author, description, quantity, location)) {
+  if (!validInputs(name, author, description, quantity, location)) {
     throw new Error("Invalid Inputs");
   }
   const newItem: Item = { name, author, description, quantity, location };
@@ -47,7 +60,7 @@ function create(reqBody) {
     (item) => item.name === newItem.name && item.location === newItem.location
   );
   if (replicatedItem) {
-    const updatedItem = {
+    const updatedItem: Item = {
       name,
       author,
       description,
@@ -65,11 +78,11 @@ function create(reqBody) {
   saveData();
 }
 
-function update(id: string, reqBody) {
+function update(id: string, reqBody: string) {
   const { name, author, description, quantity, location } = JSON.parse(reqBody);
 
   // Validate inputs
-  if (invalidInputs(name, author, description, quantity, location)) {
+  if (!validInputs(name, author, description, quantity, location)) {
     throw new Error("Invalid Inputs");
   }
   const params = { name, author, description, quantity, location };
@@ -80,7 +93,7 @@ function update(id: string, reqBody) {
   saveData();
 }
 
-function _delete(id) {
+function _delete(id: string) {
   // filter out deleted user and save
   items = items.filter((x) => x.id.toString() !== id.toString());
   saveData();

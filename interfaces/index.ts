@@ -6,3 +6,9 @@ export interface Item {
   quantity: number;
   location: string;
 }
+
+export interface City {
+  name: string;
+  lat: number;
+  lon: number;
+}

@@ -1,32 +1,36 @@
+import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import { Item } from "../interfaces/Item";
+import { Item, City } from "../interfaces/";
 import Weather from "../components/Weather";
 import { Fragment } from "react";
+const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
-export async function getServerSideProps() {
-  const itemRes = await fetch("http://localhost:3000/api/items", {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const itemRes = await fetch(`${url}/api/items`, {
     method: "GET",
   });
-  const items = await itemRes.json();
+  const items: Item[] = await itemRes.json();
 
-  const cityRes = await fetch("http://localhost:3000/api/cities", {
+  const cityRes = await fetch(`${url}/api/cities`, {
     method: "GET",
   });
-  const cities = await cityRes.json();
+  const cities: City[] = await cityRes.json();
 
   return {
     props: { items, cities },
   };
-}
+};
 
-export default function Home({ items, cities }) {
-  const itemList: Item[] = items;
-  const cityArray = cities;
+type Props = {
+  items: Item[];
+  cities: City[];
+};
 
+export default function Home({ items, cities }: Props) {
   const addItems = (city: string) => {
-    const cityItems = itemList.filter((item) => item.location == city);
+    const cityItems = items.filter((item) => item.location == city);
     return cityItems.map((item) => {
       return (
         <tr key={item.id}>
@@ -39,7 +43,7 @@ export default function Home({ items, cities }) {
   };
 
   const listCities = () => {
-    return cityArray.map((city, idx) => {
+    return cities.map((city, idx) => {
       return (
         <Fragment key={idx}>
           <Link href={`/city/${city.name}`}>

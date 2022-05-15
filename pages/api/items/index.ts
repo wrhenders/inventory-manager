@@ -1,6 +1,7 @@
 import { itemsRepo } from "../../../components/repo";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
       return getItems();
