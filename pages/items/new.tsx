@@ -44,7 +44,7 @@ export default function NewItem() {
       name !== "" &&
       author !== "" &&
       description !== "" &&
-      parseInt(quantity) !== NaN &&
+      !isNaN(parseInt(quantity)) &&
       location !== ""
     );
   };
