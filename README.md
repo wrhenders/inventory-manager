@@ -1,9 +1,12 @@
 # Inventory Manager
 
-Can be seen [on Replit](https://replit.com/@wrhenders/inventory-manager#.replit) by hitting Run
+Can be seen [on Replit](https://replit.com/@wrhenders/inventory-manager#.replit) by clicking Run
 
-Inventory Managing Web App that tracks book inventories over 5 different cities.
-It shows the local weather, as well as allows the user to download the data to a CSV file for working in excel or other data processing.
+Inventory Managing Web App tracks book inventories over 5 different cities.
+
+- It shows the local weather of the city
+- CRUD functionality for working with the data
+- Allows the user to download the data to a CSV file
 
 Leverages Next.js to build and interactive Web App with a CRUD API
 
@@ -35,9 +38,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## Application Architecture
 
-- This app follows a mostly typical Next.js app structure, using pages directory to create the structure and URL routing of the project.
+- This app follows a mostly typical Next.js app structure, using /pages directory to create the structure and URL routing of the project.
 
-  - I chose Next.js to use their server side rendering functionality to allow quick loads and communication with the local database.
+  - I chose Next.js to use their server side rendering functionality to allow quick loads and communication with a local database.
 
 - The main page shows the cities, their weather and inventory allocated to them.
 
@@ -46,7 +49,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
   - There are also links on each page to create a new item or list all items, which then allows a CSV download.
 
 - The api endpoints are managed in the api directory.
+
   - The frontend first checks that any data entry fits the necessary write parameters, then sends the data through the api to the repo component which strips any excess data, revalidates and writes or retreives from the JSON database.
+
+- The database is stored locally in a db.json file for testing, but can be changed once deployed.
+  - The /components/repo file can switch to a key-value database for using the built in replit db when deployed. This change can be made by changing the DB env variable.
 
 ## Testing
 
