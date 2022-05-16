@@ -1,6 +1,6 @@
 # Inventory Manager
 
-Can be seen [on Replit](https://inventory-manager.wrhenders.repl.co)
+Can be seen [on Replit](https://replit.com/@wrhenders/inventory-manager#.replit) by hitting Run
 
 Inventory Managing Web App that tracks book inventories over 5 different cities.
 It shows the local weather, as well as allows the user to download the data to a CSV file for working in excel or other data processing.
