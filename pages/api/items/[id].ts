@@ -13,8 +13,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  function getById() {
-    const item = itemsRepo.getById(req.query.id as string);
+  async function getById() {
+    const item = await itemsRepo.getById(req.query.id as string);
     return res.status(200).json(item);
   }
 

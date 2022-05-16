@@ -11,8 +11,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  function getItems() {
-    const items = itemsRepo.getAll();
+  async function getItems() {
+    const items = await itemsRepo.getAll();
     return res.status(200).json(items);
   }
 
